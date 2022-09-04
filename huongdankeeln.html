@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>6 TIPS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fontsome.css">
+	<link rel="stylesheet" type="text/css" href="myshop.css">
+	<link rel="stylesheet" type="text/js" href="slidecon.js">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" integrity="sha512-eMxdaSf5XW3ZW1wZCrWItO2jZ7A9FhuZfjVdztr7ZsKNOmt6TUMTQgfpNoVRyfPE5S9BC0A4suXzsGSrAOWcoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"  href="css/footer.css">
+<link rel="stylesheet" type="text/css" href="huongdan.css">
+<script>
+  function initComparisons() {
+    var x, i;
+    /*find all elements with an "overlay" class:*/
+    x = document.getElementsByClassName("img-comp-overlay");
+    for (i = 0; i < x.length; i++) {
+      /*once for each "overlay" element:
+      pass the "overlay" element as a parameter when executing the compareImages function:*/
+      compareImages(x[i]);
+    }
+    function compareImages(img) {
+      var slider, img, clicked = 0, w, h;
+      /*get the width and height of the img element*/
+      w = img.offsetWidth;
+      h = img.offsetHeight;
+      /*set the width of the img element to 50%:*/
+      img.style.width = (w / 2) + "px";
+      /*create slider:*/
+      slider = document.createElement("DIV");
+      slider.setAttribute("class", "img-comp-slider");
+      /*insert slider*/
+      img.parentElement.insertBefore(slider, img);
+      /*position the slider in the middle:*/
+      slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+      slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+      /*execute a function when the mouse button is pressed:*/
+      slider.addEventListener("mousedown", slideReady);
+      /*and another function when the mouse button is released:*/
+      window.addEventListener("mouseup", slideFinish);
+      /*or touched (for touch screens:*/
+      slider.addEventListener("touchstart", slideReady);
+      /*and released (for touch screens:*/
+      window.addEventListener("touchend", slideFinish);
+      function slideReady(e) {
+        /*prevent any other actions that may occur when moving over the image:*/
+        e.preventDefault();
+        /*the slider is now clicked and ready to move:*/
+        clicked = 1;
+        /*execute a function when the slider is moved:*/
+        window.addEventListener("mousemove", slideMove);
+        window.addEventListener("touchmove", slideMove);
+      }
+      function slideFinish() {
+        /*the slider is no longer clicked:*/
+        clicked = 0;
+      }
+      function slideMove(e) {
+        var pos;
+        /*if the slider is no longer clicked, exit this function:*/
+        if (clicked == 0) return false;
+        /*get the cursor's x position:*/
+        pos = getCursorPos(e)
+        /*prevent the slider from being positioned outside the image:*/
+        if (pos < 0) pos = 0;
+        if (pos > w) pos = w;
+        /*execute a function that will resize the overlay image according to the cursor:*/
+        slide(pos);
+      }
+      function getCursorPos(e) {
+        var a, x = 0;
+        e = (e.changedTouches) ? e.changedTouches[0] : e;
+        /*get the x positions of the image:*/
+        a = img.getBoundingClientRect();
+        /*calculate the cursor's x coordinate, relative to the image:*/
+        x = e.pageX - a.left;
+        /*consider any page scrolling:*/
+        x = x - window.pageXOffset;
+        return x;
+      }
+      function slide(x) {
+        /*resize the image:*/
+        img.style.width = x + "px";
+        /*position the slider:*/
+        slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+      }
+    }
+  }
+      </script>
+</head>
+<body>
+ 
+ <!-- header start -->
+ <header class="header">
+ 	<div class="container">
+ 		<div class="row-dau v-center">
+ 			<div class="header-item item-left">
+ 				<div class="logo">
+ 					<a href="#">LNTV</a>
+ 				</div>
+ 			</div>
+ 			<!-- menu start here -->
+ 			<div class="header-item item-center">
+ 				<div class="menu-overlay">
+ 				</div>
+ 				<nav class="menu">
+ 					<div class="mobile-menu-head">
+ 						<div class="go-back"></div>
+ 						<div class="current-menu-title"></div>
+ 						<div class="mobile-menu-close">&times;</div>
+ 					</div>
+ 					<ul class="menu-main">
+ 						<li>
+ 							<a href="#">Trang chủ</a>
+ 						</li>
+ 						<li class="menu-item-has-children">
+              <a href="#">Hàng bán chạy</a>
+              <div class="sub-menu mega-menu mega-menu-column-4">
+                <div class="list-item text-center">
+                  <a href="#">
+                  <img src="anh/nhlc6.jpg" alt="new Product">
+                  <h4 class="title">Nước hoa LANCÔME</h4>
+                  </a>
+                </div>
+                <div class="list-item text-center">
+                  <a href="#">
+                  <img src="anh/nhgc12.jpg" alt="new Product">
+                  <h4 class="title">Nước hoa GUCCI</h4>
+                  </a>
+                </div>
+                <div class="list-item text-center">
+                  <a href="#">
+                  <img src="anh/sonbong6.jpg" alt="new Product">
+                  <h4 class="title">Son bóng DIOR</h4>
+                  </a>
+                </div>
+                <div class="list-item text-center">
+                  <a href="#">
+                  <img src="anh/knysl4.jpg" alt="new Product">
+                  <h4 class="title">Kem nền YSL</h4>
+                   </a>
+                </div>
+                <div class="list-item text-center">
+                 <a href="#">
+                 <img src="anh/sonthoi4.jpg" alt="new Product">
+                 <h4 class="title">Son thỏi DIOR</h4>
+                  </a>
+               </div>
+               <div class="list-item text-center">
+                 <a href="#">
+                 <img src="anh/knm3.webp" alt="new Product">
+                 <h4 class="title">Kem nền M.A.C</h4>
+                  </a>
+               </div>
+               <div class="list-item text-center">
+                 <a href="#">
+                 <img src="anh/sonthoi8.jpg" alt="new Product">
+                 <h4 class="title">Son thỏi DIOR</h4>
+                  </a>
+               </div>
+               <div class="list-item text-center">
+                 <a href="#">
+                 <img src="anh/thoimac14.webp" alt="new Product">
+                 <h4 class="title">Son thỏi M.A.C</h4>
+                  </a>
+ 								</div>
+ 							</div>
+ 						</li>
+ 						<li class="menu-item-has-children">
+ 							<a href="#">Shop</a>
+ 							<div class="sub-menu mega-menu mega-menu-column-4">
+                               <div class="list-item">
+                                <h4 class="title">SON MÔI</h4>
+                                <ul>
+                                   <li><a target="_blank" href="sondior.html">DIOR</a></li>
+                                  
+                                   <li><a target="_blank" href="sonmac.html">M.A.C</a></li>
+                                   <li><a target="_blank" href="sonmac.html"></a></li>
+                                </ul>
+                                <h4 class="title">EYELINER</h4>
+                                <ul>
+                                   <li><a target="_blank" href="eyelinermaybeline.html">MAYBELINE</a></li>
+                                   <li><a target="_blank" href="eyelinerdior.html">DIOR</a></li>
+                                  
+                                </ul>
+                            </div>
+                            <div class="list-item">
+                              <h4 class="title">KEM NỀN</h4>
+                              <ul>
+                               
+                                   <li><a target="_blank" href="kemnenmac.html">M.A.C</a></li>
+                                   <li><a target="_blank" href="kemnenysl.html">YSL</a></li>
+                                   <li><a target="_blank" href=""></a></li>
+                                  
+                                </ul>
+                                <h4 class="title">NƯỚC HOA</h4>
+                                <ul>
+                                 
+                                 <li><a target="_blank" href="nhlc.html">LANCOME</a></li>
+                                 <li><a target="_blank" href="nhgc.html">GUCCI</a></li>
+                            </ul>
+                               </div>
+                             
+                               <div class="list-item">
+                               	 <img src="anh/thaovy.jpg" alt="shop">
+                                    <div class="thaovy" >
+                                        <h3 class="tv">YOU ARE THE NEW BEAUTY, GIRLS!</h3>
+                                       </div>
+                    
+                               </div>
+ 							</div>
+ 						</li>
+ 						<li class="menu-item-has-children">
+ 							<a href="#">Góc chia sẻ</a>
+ 							<div class="sub-menu single-column-menu">
+ 								<ul>
+ 									<li><a href="#">CHIA SẺ 1</a></li>
+ 									<li><a href="#">CHIA SẺ 1</a></li>
+ 									<li><a href="#">CHIA SẺ 1</a></li>
+ 								</ul>
+ 							</div>
+ 						</li>
+ 				
+ 					</ul>
+ 				</nav>
+ 			</div>
+ 			<!-- menu end here -->
+ 			<div class="header-item item-right">
+ 				<a href="#"><i class="fas fa-search"></i></a>
+ 				<a href="#"><i class="far fa-heart"></i></a>
+ 				<a href="#"><i class="fas fa-shopping-cart"></i></a>
+ 				<!-- mobile menu trigger -->
+ 				<div class="mobile-menu-trigger">
+ 					<span></span>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </header>
+ <!-- header end -->
+ 
+
+ <div class="tieude">
+    <h1>6 TIPS FOR PERFECT WINGED EYELINER</h1>
+    <h3>You've got the eyeliner and the drive to succeed. You're on your way to rocking winged liner! Anyone can wear winged liner, even if you have hooded eyes (tip: a bat wing also looks awesome on this eye shape). Similar to a cat eye, winged liner focuses on lining only the upper lid. Easy. And super versatile, winged liner looks just as amazing during the day as it does at night.
+<p></p>
+
+        The only thing between you and that fabulous winged liner look? That makeup-artist skill set on how to do winged liner. No worries, we've got you. First you need our best eyeliners to do wing eyeliner - keep scrolling to see what they are! Then, you need to master our best winged eyeliner hacks.
+    </h3>
+ </div>
+
+
+ 
+ <div class="hd">
+    <div class="row ">
+       <div class="col-md-6">
+              <h1>
+                 <hr/>
+                 TIP #1: DÙNG BĂNG KEO GIA DỤNG
+                 <hr/>
+              </h1>
+            <p>
+                Dán một miếng băng dính gia dụng ngay bên dưới nơi bạn sẽ vẽ cánh kẻ mắt của mình. Sử dụng băng như một đường theo dõi và vẽ trên đường băng keo đó. Tháo băng để có đường kẻ mắt hoàn hảo, sắc nét hoàn hảo
+            </p>
+       </div>
+
+       <div class="col-md-6">
+             <img src="anh/tip1.jpg" style="width:100%; height:600px;" >
+       </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-6">
+              <img src="anh/tip2.webp" style="width:100%; height:600px;" >
+        </div>
+
+        <div class="col-md-6">
+               <h1>
+                  <hr/>
+                  TIP #2: CỐ ĐỊNH ĐƯỜNG CONG MỚI DÁN VÀ VẼ
+                  <hr/>
+               </h1>
+             <p>
+                Nghe có vẻ đơn giản, nhưng nó tạo nên sự khác biệt: Đặt cánh tay của bạn trên bàn để ổn định và nhìn xuống gương nghiêng khi sử dụng bút kẻ mắt có cánh để thực hiện đơn giản và không gây căng thẳng.
+                </p>
+        </div>
+  </div>
+
+     <div class="row ">
+        <div class="col-md-6">
+               <h1>
+                  <hr/>
+                  TIP #3: LÀM SẠCH VÙNG BỊ LEM 
+                  <hr/>
+               </h1>
+             <p>
+                Khi bạn đã vẽ xong đường eyeliner có cánh, hãy nhúng một chiếc cọ góc cạnh hoặc Q-tip vào bông tẩy trang và dùng nó để làm sạch bất kỳ khuyết điểm nào.
+
+                </p>
+        </div>
+ 
+        <div class="col-md-6">
+              <img src="anh/tip3.jpg" style="width:100%; height:600px;" >
+        </div>
+     </div>
+
+     <div class="row ">
+        <div class="col-md-6">
+              <img src="anh/tip4.jpg" style="width:100%; height:600px;" >
+        </div>
+
+        <div class="col-md-6">
+               <h1>
+                  <hr/>
+                  TIP #4: 1 BƯỚC VỚI TẠO MẮT KHÓI
+                  <hr/>
+               </h1>
+             <p>
+                Để có được đôi mắt khói ngay lập tức, Chuyên gia trang điểm Grace Lee gợi ý sử dụng bút chì kẻ mắt dạng gel để kẻ mắt, không lo tạo đường kẻ hoàn hảo, và pha trộn nhẹ nhàng đường kẻ mắt để tạo hiệu ứng kẻ mắt có cánh, màu phấn mắt. Điều này cũng cung cấp một lớp nền tuyệt vời cho phấn mắt, đảm bảo bóng sẽ lâu trôi hơn!
+                </p>
+        </div>
+ </div>
+
+     <div class="row ">
+        <div class="col-md-6">
+               <h1>
+                  <hr/>
+                  TIP #5: THỰC HÀNH TẠO NÊN HOÀN HẢO
+                  <hr/>
+               </h1>
+             <p>
+                Nếu bạn mới làm quen với kẻ mắt, đặc biệt là kẻ mắt dạng lỏng, Grace khuyên bạn nên bắt đầu với phiên bản dạng bút, như Hyper Easy Liquid Eyeliner. Để có cảm giác về độ trôi chảy của bút, hãy luyện tập trên mu bàn tay trước khi kẻ viền mắt có cánh. Sử dụng các nét nhỏ dọc theo hàng mi cho đến khi bạn có thể hoàn thiện một đường mềm mại.
+                </p>
+        </div>
+ 
+        <div class="col-md-6">
+              <img src="anh/tip5.jpg" style="width:100%; height:600px;" >
+        </div>
+     </div>
+
+     <div class="row ">
+         <div class="col-md-6">
+              <img src="anh/tip6.jpg" style="width:100%; height:600px;" >
+        </div>
+        <div class="col-md-6">
+               <h1>
+                  <hr/>
+                  TIP #6: KHI HOÀI NGHI, HÃY TINH TẾ!
+                  <hr/>
+               </h1>
+             <p>
+                Tạo một lớp lót rất tự nhiên, nhưng rõ ràng với bút kẻ mắt Lasting Drama Gel Eyeliner. Grace gợi ý sử dụng cọ góc và thoa gel lót ngay vào hàng mi để tạo hình đôi mắt mà không giống như "trang điểm".
+                </p>
+        </div>
+ </div>
+  </div>
+
+  
+  
+  
+
+
+  
+	<!-------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<footer class="footer-section bg-with-black">
+        <div class="footer-top-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-fta">
+                            <img src="anh/thaovy.jpg" style="width:60%;" alt="" >
+                            <ul class="fta-list">
+                                <li><span class="glyphicon glyphicon-chevron-right"></span> VY THAO LAM</a></li>
+                                <li><span class="glyphicon glyphicon-chevron-right"></span> NGUYEN TAT THANH UNIVERSITY</a></li>
+                                <li><span class="glyphicon glyphicon-chevron-right"></span>FACULTY: IT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-fta">
+                            <h3 class="fta-title">Liên kết xã hội</h3>
+                            <ul class="fta-list">
+                                <li><a href="https://www.instagram.com/coo_chu/"><i class="fa-brands fa-instagram"></i>&#160;coo_chu</a></li>
+                                <li><a href="https://www.facebook.com/people/Vy-Thao-Lam/100013840458199/"><i class="fa-brands fa-square-facebook"></i> &#160;Vy Thao Lam</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-fta">
+                            <h3 class="fta-title">CÔNG VIỆC</h3>
+                            <ul class="fta-list">
+                              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Quan hệ đối tác</a></li>
+                              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Đầu tư kinh doanh</a></li>
+                              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Nhận mẫu ảnh cho shop</a></li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="single-fta">
+                            <h3 class="fta-title">Liên hệ với SHOP</h3>
+                            <ul class="fta-list">
+                                <li>Địa chỉ: 20 Dương Quảng Hàm, quận Gò Vấp, TP.HCM </li>
+                                <li>Số Điện Thoại: 0904155796</li>
+                                <li>Email: 2100011234@nttu.edu.vn </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      
+    </footer>
+<!------>
+
+
+	
+ 
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="mySshop.js" ></script>
+
+  
+  
+</body>
+</html>
+
+
+
